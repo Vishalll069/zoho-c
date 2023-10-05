@@ -228,9 +228,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 		Attendance attendance = new Attendance();
 		
-		if (lastAttendance !=null && lastAttendance.getCheckOutTimestamp() == null){
-			throw new AttendanceException("Need to CheckOut before CheckIn ");
-		}
+		
 		if (lastAttendance == null) {
 
 			attendance.setCheckInTimestamp(LocalTime.now(zoneId));
@@ -239,6 +237,9 @@ public class AttendanceServiceImpl implements AttendanceService {
 			attendance.setEmployee(employee);
 			return attendanceRepo.save(attendance);
 
+		}
+		if (lastAttendance !=null && lastAttendance.getCheckOutTimestamp() == null){
+			throw new AttendanceException("Need to CheckOut before CheckIn ");
 		}
 		else{
 		attendance.setCheckInTimestamp(LocalTime.now(zoneId));
