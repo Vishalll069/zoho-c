@@ -238,15 +238,16 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 		}
 
-		if (lastAttendance.getCheckOutTimestamp() == null)
+		if (lastAttendance.getCheckOutTimestamp() == null){
 			throw new AttendanceException("Need to CheckOut before CheckIn ");
-
+		}
+		else{
 		attendance.setCheckInTimestamp(LocalTime.now(zoneId));
 		System.out.println(attendance.getCheckInTimestamp());
 		attendance.setDate(LocalDate.now());
 		attendance.setEmployee(employee);
 		return attendanceRepo.save(attendance);
-
+		}
 	}
 
 	public Attendance findByUserIdFirstRecord(Integer id) {
