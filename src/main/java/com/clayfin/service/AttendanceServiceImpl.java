@@ -222,7 +222,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 				.orElseThrow(() -> new EmployeeException(Constants.EMPLOYEE_NOT_FOUND_WITH_ID + employeeId));
 
 		//Attendance lastAttendance =  findByUserId(employeeId);
-		Attendance lastAttendance = attendanceRepo.findTopByEmployeeEmployeeIdOrderByEmployeeEmployeeIdDesc(employeeId);
+		Attendance lastAttendance = attendanceRepo.findTopByEmployeeEmployeeIdOrderByCheckInTimestampDesc(employeeId);
 		if(lastAttendance!=null && lastAttendance.getCheckOutTimestamp()==null)
 			throw new AttendanceException("CheckOut First To Check In");
 
