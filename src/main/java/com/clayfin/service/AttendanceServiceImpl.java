@@ -237,7 +237,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 
 		}
 
-		if (lastAttendance.getCheckOutTimestamp() == null){
+		if (lastAttendance !=null && lastAttendance.getCheckOutTimestamp() == null){
 			throw new AttendanceException("Need to CheckOut before CheckIn ");
 		}
 		else{
