@@ -227,7 +227,7 @@ public class AttendanceServiceImpl implements AttendanceService {
 			throw new AttendanceException("CheckOut First To Check In");
 
 		Attendance attendance = new Attendance();
-
+		System.out.println(lastAttendance);
 		if (lastAttendance == null) {
 
 			attendance.setCheckInTimestamp(LocalTime.now(zoneId));
